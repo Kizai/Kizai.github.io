@@ -4008,3 +4008,15 @@ a.pswp__share--download:hover {
   color: #ccc;
   text-decoration: underline
 }
+
+/*
+.article-inner h1.article-title, .article-title {
+  color: #000000;
+  margin-left: 0;
+  font-weight: 300;
+  line-height: 35px;
+  margin-bottom: 20px;
+  font-size: 32px;
+  transition: color .3s
+}
+*/
