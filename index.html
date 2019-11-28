@@ -245,13 +245,45 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="高速搭建个人博客教程"><a href="#高速搭建个人博客教程" class="headerlink" title="高速搭建个人博客教程"></a>高速搭建个人博客教程</h2><h3 id="一、-安装node-js"><a href="#一、-安装node-js" class="headerlink" title="一、    安装node.js"></a>一、    安装node.js</h3><h3 id="二、-安装cnpm"><a href="#二、-安装cnpm" class="headerlink" title="二、    安装cnpm"></a>二、    安装cnpm</h3><h4 id="1、-使用管理员权限打开cmd"><a href="#1、-使用管理员权限打开cmd" class="headerlink" title="1、    使用管理员权限打开cmd"></a>1、    使用管理员权限打开cmd</h4><h4 id="2、-输入命令："><a href="#2、-输入命令：" class="headerlink" title="2、    输入命令："></a>2、    输入命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm –registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<h4 id="3、-这是淘宝的一个npm下载链接，自动安装完成"><a href="#3、-这是淘宝的一个npm下载链接，自动安装完成" class="headerlink" title="3、    这是淘宝的一个npm下载链接，自动安装完成"></a>3、    这是淘宝的一个npm下载链接，自动安装完成</h4><h4 id="4、-输入cnpm"><a href="#4、-输入cnpm" class="headerlink" title="4、    输入cnpm"></a>4、    输入cnpm</h4><h3 id="三、-使用cnpm进行hexo的全局安装"><a href="#三、-使用cnpm进行hexo的全局安装" class="headerlink" title="三、    使用cnpm进行hexo的全局安装"></a>三、    使用cnpm进行hexo的全局安装</h3><h4 id="1、-输入命令："><a href="#1、-输入命令：" class="headerlink" title="1、    输入命令："></a>1、    输入命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h4 id="2、-验证："><a href="#2、-验证：" class="headerlink" title="2、    验证："></a>2、    验证：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<h3 id="四、-使用hexo搭建框架"><a href="#四、-使用hexo搭建框架" class="headerlink" title="四、    使用hexo搭建框架"></a>四、    使用hexo搭建框架</h3><h4 id="1、-新建一个文件夹：文件全部会进到这个文件夹里面例如："><a href="#1、-新建一个文件夹：文件全部会进到这个文件夹里面例如：" class="headerlink" title="1、    新建一个文件夹：文件全部会进到这个文件夹里面例如："></a>1、    新建一个文件夹：文件全部会进到这个文件夹里面例如：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f: 进入F盘 mkdir kizaiblog 新建一个kizaiblog文件夹 <span class="built_in">cd</span> kizaiblog/进入文件夹</span><br></pre></td></tr></table></figure>
-<h4 id="2、-输入命令：-1"><a href="#2、-输入命令：-1" class="headerlink" title="2、    输入命令："></a>2、    输入命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init   初始化框架，等待一段时间就可以了</span><br></pre></td></tr></table></figure>
-<h3 id="五、-输入"><a href="#五、-输入" class="headerlink" title="五、    输入:"></a>五、    输入:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s 打开框架：在浏览器中输入localhost:4000 或 127.0.0.1 4000</span><br></pre></td></tr></table></figure>
-<h4 id="1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘-f-gt-cd-kizaiblog-再输入hexo-s就可以直接运行了"><a href="#1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘-f-gt-cd-kizaiblog-再输入hexo-s就可以直接运行了" class="headerlink" title="1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘 f: -&gt; cd kizaiblog/ 再输入hexo s就可以直接运行了"></a>1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘 f: -&gt; cd kizaiblog/ 再输入hexo s就可以直接运行了</h4><h4 id="2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入"><a href="#2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入" class="headerlink" title="2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入"></a>2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -p （你想输入的端口号）</span><br></pre></td></tr></table></figure>
-<h4 id="3、重新输入ip地址和新端口就可以访问了"><a href="#3、重新输入ip地址和新端口就可以访问了" class="headerlink" title="3、重新输入ip地址和新端口就可以访问了"></a>3、重新输入ip地址和新端口就可以访问了</h4>
+<div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/YCvyV8CVVRkOIbnlTM6TZSlMMKz*bAPhXwRFpqBFVgg!/b/dLYAAAAAAAAA&bo=HAX3AgAAAAADB84!&rf=viewer_4"  alt="1" />
+</div>
+
+<h4 id="3、-这是淘宝的一个npm下载链接，自动安装完成"><a href="#3、-这是淘宝的一个npm下载链接，自动安装完成" class="headerlink" title="3、    这是淘宝的一个npm下载链接，自动安装完成"></a>3、    这是淘宝的一个npm下载链接，自动安装完成</h4><h4 id="4、-输入cnpm"><a href="#4、-输入cnpm" class="headerlink" title="4、    输入cnpm"></a>4、    输入cnpm</h4><div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/QCQbpYG0R5dDhTrfjwLKaDQHLXBES1JJY36629B1hP4!/b/dIQAAAAAAAAA&bo=LwUBAwAAAAADFxo!&rf=viewer_4"  alt="2" />
+</div>
+
+<h3 id="三、-使用cnpm进行hexo的全局安装"><a href="#三、-使用cnpm进行hexo的全局安装" class="headerlink" title="三、    使用cnpm进行hexo的全局安装"></a>三、    使用cnpm进行hexo的全局安装</h3><h4 id="1、-输入命令："><a href="#1、-输入命令：" class="headerlink" title="1、    输入命令："></a>1、    输入命令：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/Ji2KTYtHt3MrFWjVIR*Mw3IgEyXhE*uX.PLpVEnaL1Q!/b/dL4AAAAAAAAA&bo=LwUBAwAAAAADJyo!&rf=viewer_4"  alt="3" />
+</div>
+
+<h4 id="2、-验证是否安装成功："><a href="#2、-验证是否安装成功：" class="headerlink" title="2、    验证是否安装成功："></a>2、    验证是否安装成功：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/dAunU00XRJdhtyy4KT8a3Um64cH9gapVYCiSYdClgbA!/b/dLYAAAAAAAAA&bo=LwUBAwAAAAADFxo!&rf=viewer_4" alt="4" />
+</div>
+
+<h3 id="四、使用hexo搭建框架"><a href="#四、使用hexo搭建框架" class="headerlink" title="四、使用hexo搭建框架"></a>四、使用hexo搭建框架</h3><h4 id="1、新建一个文件夹：文件全部会进到这个文件夹里面例如："><a href="#1、新建一个文件夹：文件全部会进到这个文件夹里面例如：" class="headerlink" title="1、新建一个文件夹：文件全部会进到这个文件夹里面例如："></a>1、新建一个文件夹：文件全部会进到这个文件夹里面例如：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f: 进入F盘 mkdir kizaiblog 新建一个kizaiblog文件夹 <span class="built_in">cd</span> kizaiblog/进入文件夹</span><br></pre></td></tr></table></figure>
+<h4 id="2、初始化框架："><a href="#2、初始化框架：" class="headerlink" title="2、初始化框架："></a>2、初始化框架：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init   等待下载完成即可一段时间就可以了</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/1Mk.l2zVdVy*VBnlOP*305ExRqOkk.UxozrhBbIWZS0!/b/dDQBAAAAAAAA&bo=LwXTAwAAAAADJ*g!&rf=viewer_4"  alt="5" />
+</div>
+
+<h3 id="五、输入"><a href="#五、输入" class="headerlink" title="五、输入:"></a>五、输入:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s 打开框架：在浏览器中输入localhost:4000 或 127.0.0.1 4000</span><br></pre></td></tr></table></figure>
+<h4 id="1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘-f-gt-cd-kizaiblog-再输入hexo-s就可以直接运行了"><a href="#1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘-f-gt-cd-kizaiblog-再输入hexo-s就可以直接运行了" class="headerlink" title="1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘 f: -&gt; cd kizaiblog/ 再输入hexo s就可以直接运行了"></a>1、如果重新启用网站，首先要进入之前下载好的包里面才行，例如打开F盘 f: -&gt; cd kizaiblog/ 再输入hexo s就可以直接运行了</h4><h4 id="2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入"><a href="#2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入" class="headerlink" title="2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入"></a>2、由于4000端口很容易被占用，所以要修改端口，在之前的文件下输入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -p （你想输入的端口号）<span class="comment">#hexo server -p 5000</span></span><br></pre></td></tr></table></figure>
+
+<div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/SZtFIPK.fXD.qcuKJCZVM.S0Xfkn0BzpJ02SbCLrmds!/b/dFMBAAAAAAAA&bo=HQUAAQAAAAADFys!&rf=viewer_4" alt="6" />
+</div>
+
+<h4 id="3、重新输入ip地址和新端口就可以访问到初始界面"><a href="#3、重新输入ip地址和新端口就可以访问到初始界面" class="headerlink" title="3、重新输入ip地址和新端口就可以访问到初始界面"></a>3、重新输入ip地址和新端口就可以访问到初始界面</h4><div align="center">
+   <img src="http://m.qpic.cn/psb?/V12ANyvr2MoJir/69PvWb64Hfd1KVfJzfKNoYmDWmm1U.R*gPgac*W5nMY!/b/dL4AAAAAAAAA&bo=gAc4BAAAAAADR9k!&rf=viewer_4" alt="7" />
+</div>
+
+
       
 
       
