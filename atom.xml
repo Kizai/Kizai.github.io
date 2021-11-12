@@ -6,7 +6,7 @@
   <link href="http://kizai.github.io/atom.xml" rel="self"/>
   
   <link href="http://kizai.github.io/"/>
-  <updated>2021-11-10T14:36:40.739Z</updated>
+  <updated>2021-11-12T15:29:51.676Z</updated>
   <id>http://kizai.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://kizai.github.io/2021/11/08/RE/"/>
     <id>http://kizai.github.io/2021/11/08/RE/</id>
     <published>2021-11-07T16:22:22.000Z</published>
-    <updated>2021-11-10T14:36:40.739Z</updated>
+    <updated>2021-11-12T15:29:51.676Z</updated>
     
     
       
@@ -66,7 +66,7 @@
     <link href="http://kizai.github.io/2021/11/07/Tmux/"/>
     <id>http://kizai.github.io/2021/11/07/Tmux/</id>
     <published>2021-11-07T15:54:07.000Z</published>
-    <updated>2021-11-10T14:36:40.749Z</updated>
+    <updated>2021-11-12T15:30:01.280Z</updated>
     
     
       
@@ -74,27 +74,6 @@
         
         
     <summary type="html">&lt;h3 id=&quot;安装tmux&quot;&gt;&lt;a href=&quot;#安装tmux&quot; class=&quot;headerlink&quot; title=&quot;安装tmux&quot;&gt;&lt;/a&gt;安装tmux&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://kizai.github.io/2021/11/07/hello-world/"/>
-    <id>http://kizai.github.io/2021/11/07/hello-world/</id>
-    <published>2021-11-07T08:05:51.670Z</published>
-    <updated>2021-11-10T14:36:40.754Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
         
       
     
