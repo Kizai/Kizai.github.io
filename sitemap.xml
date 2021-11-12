@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kizai.github.io/2021/11/13/ESPTCP/</loc>
+    
+    <lastmod>2021-11-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kizai.github.io/2021/11/12/BaiduVC/</loc>
+    
+    <lastmod>2021-11-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://kizai.github.io/2021/11/13/df-sed-awk-du-grep/</loc>
     
     <lastmod>2021-11-12</lastmod>
@@ -17,13 +31,6 @@
   
   <url>
     <loc>http://kizai.github.io/2021/11/08/RE/</loc>
-    
-    <lastmod>2021-11-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kizai.github.io/2021/11/12/BaiduVC/</loc>
     
     <lastmod>2021-11-12</lastmod>
     
@@ -102,6 +109,13 @@
   </url>
   
   <url>
+    <loc>http://kizai.github.io/tags/Android-ESP8266/</loc>
+    <lastmod>2021-11-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://kizai.github.io/tags/Linux-Shell/</loc>
     <lastmod>2021-11-12</lastmod>
     <changefreq>daily</changefreq>
@@ -109,6 +123,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>http://kizai.github.io/categories/Android/</loc>
+    <lastmod>2021-11-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://kizai.github.io/categories/Linux-Shell/</loc>
