@@ -6,7 +6,7 @@
   <link href="http://kizai.github.io/atom.xml" rel="self"/>
   
   <link href="http://kizai.github.io/"/>
-  <updated>2021-11-12T15:29:51.676Z</updated>
+  <updated>2021-11-12T15:50:04.964Z</updated>
   <id>http://kizai.github.io/</id>
   
   <author>
@@ -17,11 +17,57 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>AndroidSQlite</title>
+    <link href="http://kizai.github.io/2021/11/12/AndroidSQlite/"/>
+    <id>http://kizai.github.io/2021/11/12/AndroidSQlite/</id>
+    <published>2021-11-12T15:48:36.000Z</published>
+    <updated>2021-11-12T15:50:04.964Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;安卓通过SQLlite实现登录注册功能&quot;&gt;&lt;a href=&quot;#安卓通过SQLlite实现登录注册功能&quot; class=&quot;headerlink&quot; title=&quot;安卓通过SQLlite实现登录注册功能&quot;&gt;&lt;/a&gt;安卓通过SQLlite实现登录注册功能&lt;/h2&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Android,SQlite" scheme="http://kizai.github.io/tags/Android-SQlite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BaiduVC</title>
+    <link href="http://kizai.github.io/2021/11/12/BaiduVC/"/>
+    <id>http://kizai.github.io/2021/11/12/BaiduVC/</id>
+    <published>2021-11-12T15:44:55.000Z</published>
+    <updated>2021-11-12T15:50:04.972Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;百度语音助手集成到Fragment里面怎么避坑？&quot;&gt;&lt;a href=&quot;#百度语音助手集成到Fragment里面怎么避坑？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Android,Baidu语音识别" scheme="http://kizai.github.io/tags/Android-Baidu%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>正则表达式匹配规则</title>
     <link href="http://kizai.github.io/2021/11/08/RE/"/>
     <id>http://kizai.github.io/2021/11/08/RE/</id>
     <published>2021-11-07T16:22:22.000Z</published>
-    <updated>2021-11-12T15:29:51.676Z</updated>
+    <updated>2021-11-12T15:51:57.423Z</updated>
     
     
       
@@ -36,6 +82,10 @@
     
     
     
+    <category term="Linux,Shell" scheme="http://kizai.github.io/categories/Linux-Shell/"/>
+    
+    
+    <category term="Linux,Shell" scheme="http://kizai.github.io/tags/Linux-Shell/"/>
     
   </entry>
   
@@ -66,7 +116,7 @@
     <link href="http://kizai.github.io/2021/11/07/Tmux/"/>
     <id>http://kizai.github.io/2021/11/07/Tmux/</id>
     <published>2021-11-07T15:54:07.000Z</published>
-    <updated>2021-11-12T15:35:28.420Z</updated>
+    <updated>2021-11-12T15:52:10.116Z</updated>
     
     
       
@@ -80,6 +130,10 @@
     
     
     
+    <category term="Linux,Shell" scheme="http://kizai.github.io/categories/Linux-Shell/"/>
+    
+    
+    <category term="Linux,Shell" scheme="http://kizai.github.io/tags/Linux-Shell/"/>
     
   </entry>
   
