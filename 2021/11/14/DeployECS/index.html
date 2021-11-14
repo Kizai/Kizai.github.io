@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析 | KizaiBlog</title><meta name="keywords" content="Linux,Hexo,部署,阿里云,服务器,域名解析"><meta name="author" content="Kizai"><meta name="copyright" content="Kizai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="背景一开始我把Hexo博客部署到Github上,其实都是博客最入门的做法，如果没有把自己做的博客部署到自己购买的服务器上再加上域名解析，我觉得这个过程是不完整的，所以我把我自己部署网站的整个过程都记录下来，希望可以对即将部署自己网站的小伙伴们，提供一些参考意见。 服务器配置：服务器购买推荐: 阿里云服务器，阿里云的服务器每年在双十一都会有活动，优惠很大。 推荐使用”轻量级应用共享型ECS服务器”,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析">
+<meta property="og:url" content="http://kizai.github.io/2021/11/14/DeployECS/index.html">
+<meta property="og:site_name" content="KizaiBlog">
+<meta property="og:description" content="背景一开始我把Hexo博客部署到Github上,其实都是博客最入门的做法，如果没有把自己做的博客部署到自己购买的服务器上再加上域名解析，我觉得这个过程是不完整的，所以我把我自己部署网站的整个过程都记录下来，希望可以对即将部署自己网站的小伙伴们，提供一些参考意见。 服务器配置：服务器购买推荐: 阿里云服务器，阿里云的服务器每年在双十一都会有活动，优惠很大。 推荐使用”轻量级应用共享型ECS服务器”,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg">
+<meta property="article:published_time" content="2021-11-14T13:36:13.000Z">
+<meta property="article:modified_time" content="2021-11-14T15:25:06.433Z">
+<meta property="article:author" content="Kizai">
+<meta property="article:tag" content="Linux,Hexo,部署,阿里云,服务器,域名解析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg"><link rel="shortcut icon" href="https://gitee.com/Kizai/blogimages/raw/master/img/202111082231257.jpg"><link rel="canonical" href="http://kizai.github.io/2021/11/14/DeployECS/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-14 23:25:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><style type="text/css">#toggle-sidebar {left:100px}</style><link rel="stylesheet" href="/css/myheadcss.css"><link rel="stylesheet" href="/css/bgcss.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="KizaiBlog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gitee.com/Kizai/blogimages/raw/master/img/202111082232482.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link faa-float animated"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart card-announcement-animation faa-float animated"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">KizaiBlog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link faa-float animated"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart card-announcement-animation faa-float animated"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-14T13:36:13.000Z" title="发表于 2021-11-14 21:36:13">2021-11-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-14T15:25:06.433Z" title="更新于 2021-11-14 23:25:06">2021-11-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux-Hexo-ECS/">Linux,Hexo,ECS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg');"></div><article class="post-content" id="article-container"><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>一开始我把<code>Hexo</code>博客部署到<code>Github</code>上,其实都是博客最入门的做法，如果没有把自己做的博客部署到自己购买的服务器上再加上域名解析，我觉得这个过程是不完整的，所以我把我自己部署网站的整个过程都记录下来，希望可以对即将部署自己网站的小伙伴们，提供一些参考意见。</p>
+<h2 id="服务器配置："><a href="#服务器配置：" class="headerlink" title="服务器配置："></a>服务器配置：</h2><h3 id="服务器购买推荐"><a href="#服务器购买推荐" class="headerlink" title="服务器购买推荐:"></a>服务器购买推荐:</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://www.aliyun.com/">阿里云服务器</a>，阿里云的服务器每年在双十一都会有活动，优惠很大。</li>
+<li>推荐使用”轻量级应用共享型ECS服务器”,推荐安装系统<code>Ubuntu 20.04</code>，或者你自己最熟悉的系统。</li>
+</ol>
+<h3 id="远程连接服务器"><a href="#远程连接服务器" class="headerlink" title="远程连接服务器"></a>远程连接服务器</h3><ol>
+<li>进入阿里云→云服务器管理控制台→远程连接，设置好root密码重启电脑生效。</li>
+<li>配置ssh远程连接服务器，在云服务器控制台→进入服务器实例→安全组→配置规则→出方向→快速添加→选中SSH(22)，按确定即可！！</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Kizai/Images/main/202111142256882.png" alt="22"></p>
+<ol>
+<li>假设我服务器公网<code>IP</code>地址就是<code>20.21.11.11</code>，在本机电脑使用<code>ssh root@20.21.11.11</code>远程登陆服务器，连接成功后输入自己刚刚设置好的云服务器的密码，就可以成功登录登录到云服务器啦。</li>
+</ol>
+<h3 id="在云服务器中创建新用户"><a href="#在云服务器中创建新用户" class="headerlink" title="在云服务器中创建新用户"></a>在云服务器中创建新用户</h3><h4 id="创建新用户kizai"><a href="#创建新用户kizai" class="headerlink" title="创建新用户kizai"></a>创建新用户<code>kizai</code></h4><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">adduser kizai <span class="comment"># 这个会提示需要重新设置一个新的登录密码</span></span><br><span class="line">chmod 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br></pre></td></tr></tbody></table></figure>
+<p>找到如下<code>root ALL:(ALL:ALL) ALL</code>后，添加一行<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">kizai ALL:(ALL:ALL) ALL <span class="comment"># kizai替换成自己的用户名</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>获取<code>root</code>权限<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo passwd kizai</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="切换到kizai用户"><a href="#切换到kizai用户" class="headerlink" title="切换到kizai用户"></a>切换到<code>kizai</code>用户</h3><p>切换到新建的用户后(后面都是以此用户和<code>~</code>目录下工作)，安装一些常用的软件。<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">su kizai</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt install vim git htop screenfetch curl wget tmux <span class="comment"># 看自己的需求来安装</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置<code>SSH</code></h3><p>创建<code>~/.ssh</code>和<code>authorized_keys</code>文件,赋予权限。<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">mkdir ~/.ssh</span><br><span class="line">vim ~/.ssh/authorized_keys <span class="comment">#名字不能错</span></span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line">chmod 700 ~/.ssh/</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="本机电脑创建ssh公钥"><a href="#本机电脑创建ssh公钥" class="headerlink" title="本机电脑创建ssh公钥"></a>本机电脑创建<code>ssh</code>公钥</h3><p>切回到本机电脑，需要生成一个本机电脑的<code>ssh</code>公钥，放好服务器的<code>.ssh/authorized_keys</code>文件里面。如果本机电脑已经生成公钥可以忽略我这一步。window系统这边建议先装一个叫<code>Window Terminal</code>的软件，以下的操作基于这个软件。<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen.exe <span class="comment"># 一路按确定就好，会有一个路径提示给你在哪存放了id_rsa.pub</span></span><br><span class="line">cat C:\Users\KIZAI\.ssh\id_rsa.pub <span class="comment"># 根据你的路径修改，直接复制你的公钥到你的剪贴板备用。 </span></span><br></pre></td></tr></tbody></table></figure><br>再回到服务器端把公钥加到<code>authoried_keys</code>文件中。<br>断开服务器连接，再使用<code>ssh kizai@20.21.11.11</code>就可以不需要输登录密码就可以成功连接了。<p></p>
+<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><p>创建<code>Git</code>裸库<code>blog.git</code>,和工作目录<code>blog</code>（存放解析后<code>html</code>文件）。<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir blog</span><br><span class="line">git init --bare blog.git</span><br><span class="line">vim blog.git/hooks/post-receive <span class="comment"># 创建新文件</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>在<code>post-receive</code>添加<code>hook</code>钩子。<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">git --work-tree=/home/kizai/blog --git-dir=/home/kizai/blog.git checkout -f</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>添加执行权限<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">chmod +x blog.git/hooks/post-receive</span><br></pre></td></tr></tbody></table></figure><br>可以执行<code>git clone kizai@20.21.11.11:/home/kizai/blog.git</code>下载云服务的文件到本机。<p></p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装<code>nginx</code></h3><p>安装 nginx 和修改对应配置文件<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt install</span><br><span class="line">sudo vim /etc/nginx/sites-available/default</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>找到<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># include snippets/snakeoil.conf;</span></span><br><span class="line"></span><br><span class="line">root /var/www/html; </span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>替换<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># include snippets/snakeoil.conf;</span></span><br><span class="line"></span><br><span class="line">root /home/kizai/blog;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>执行 <code>service nginx status</code> 查看<code>nginx</code>状态，其默认状态是运行中（服务开始了） + 开机自启 （若是没有，需要执行此状态 ）；如果不熟悉<code>nginx</code>的常用命令可以参考<a target="_blank" rel="noopener" href="https://www.keycdn.com/support/nginx-commands">9 Popular Nginx Commands You Should Know</a>。</p>
+<p>若此刻直接访问云服务器的公网<code>IP</code>不会显示任何内容，因为云服务器的<code>80</code>端口还没被打开。<br>回到云服务器控制管理中心，在云服务器控制台→进入服务器实例→安全组→配置规则→入方向→快速添加→选中HTTP(80)，按确定即可！！<br><img src="https://raw.githubusercontent.com/Kizai/Images/main/202111142255499.png" alt="80"></p>
+<p>重新输入服务器公网<code>IP</code>就可以看到<code>nginx</code>欢迎界面，因为此时<code>/home/kizai/blog</code>文件夹为空，没有任何<code>html</code>文件。</p>
+<h2 id="本机配置"><a href="#本机配置" class="headerlink" title="本机配置:"></a>本机配置:</h2><h3 id="创建hexo文件夹"><a href="#创建hexo文件夹" class="headerlink" title="创建hexo文件夹"></a>创建<code>hexo</code>文件夹</h3><p>在本地创建一个<code>kizaiblogtest</code>的文件夹，用来最小化验证部署是否正确。<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">hexo init kizaiblogtest     <span class="comment"># 创建和初始化kizaiblogtest文件夹</span></span><br><span class="line">cnpm install                <span class="comment"># 安装插件</span></span><br><span class="line">cnpm install hexo-deployer-git  <span class="comment"># hexo deploy 部署插件</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>修改<code>kizaiblogtest</code>根目录下的配置文件```_config.yml````，末尾修改为<br></p><figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">kizai@20.21.11.11:/home/kizai/blog.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span>                           </span><br><span class="line">  <span class="attr">message:</span> <span class="string">'站点更新:<span class="template-variable">{{now("YYYY-MM-DD HH:mm:ss")}}</span>'</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="部署到云服务器"><a href="#部署到云服务器" class="headerlink" title="部署到云服务器"></a>部署到云服务器</h3><p>在<code>kizaiblogtest</code>文件夹中，使用终端进行部署<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g <span class="comment"># 清理 生成html文件</span></span><br><span class="line">hexo deploy &amp;&amp; hexo  <span class="comment"># 部署，会自动将生成的 html 文件， push 到阿里云服务器的 /home/kizai/blog 文件夹中</span></span><br></pre></td></tr></tbody></table></figure><br>然后重启阿里云服务器后，浏览器输入服务器公网<code>IP</code>，即可网页看到解析后的部署网页 “Hello World”。<p></p>
+<p>最后替换为自己的真实博客文件夹的<code>_config.yml</code>文件末尾处替换为如上，重新执行<code>hexo deploy</code>部署即可成功；建议使用<code>Github</code>或者<code>Gitee</code>把之前的工程文件托管起来做好备份。</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>上面的步骤只是把博客部署云服务器上了，但是访问它还是需要用到公网<code>IP</code>，这访问也太难受了，所以我们要使用域名的方式来访问网站，那怎么把域名绑定到服务器上呢？其实比较简单，看步骤！</p>
+<ol>
+<li>在阿里云或者其他平台购买域名，根据自己的想法来设计自己的域名和它的后缀。购买完需要实名认证。</li>
+<li>回到阿里云控制台搜索”云解析DNS”，进入云解析DNS→域名解析→看到自己的域名后面有一个解析设置→点击解析设置，可参考以下设置：</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Kizai/Images/main/202111142314705.png" alt="dnsip"></p>
+<ol>
+<li>等个几分钟，使用注册好的域名就可以访问自己的博客啦！</li>
+<li>在中国地区购买的服务器和域名是需要备案的，大家绑定好域名记得做好备案工作喔！不然网站是正常访问不了的。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Kizai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://kizai.github.io/2021/11/14/DeployECS/">http://kizai.github.io/2021/11/14/DeployECS/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kizai.github.io" target="_blank">KizaiBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux-Hexo-%E9%83%A8%E7%BD%B2-%E9%98%BF%E9%87%8C%E4%BA%91-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">Linux,Hexo,部署,阿里云,服务器,域名解析</a></div><div class="post_share"><div class="social-share" data-image="https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/11/13/ESPTCP/"><img class="next-cover" src="https://p1.qhimg.com/bdm/1000_618_80/t01cce746262dcfe657.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ESP8266安卓TCP客户端开发（含全部源码）</div></div></a></div></nav><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gitee.com/Kizai/blogimages/raw/master/img/202111082232482.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">Kizai</div><div class="author-info__description">本网站是个人的兴趣爱好，总结分享经验，记录生活点滴的平台</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42001163"><i class="iconfont icon-CSDN"></i><span>Kizai's CSDN Blog</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kizai" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kizai@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/1292381504" target="_blank" title="qq"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">服务器配置：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0%E6%8E%A8%E8%8D%90"><span class="toc-number">1.</span> <span class="toc-text">服务器购买推荐:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">远程连接服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7"><span class="toc-number">3.</span> <span class="toc-text">在云服务器中创建新用户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7kizai"><span class="toc-number">3.1.</span> <span class="toc-text">创建新用户kizai</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0kizai%E7%94%A8%E6%88%B7"><span class="toc-number">4.</span> <span class="toc-text">切换到kizai用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSH"><span class="toc-number">5.</span> <span class="toc-text">配置SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E6%9C%BA%E7%94%B5%E8%84%91%E5%88%9B%E5%BB%BAssh%E5%85%AC%E9%92%A5"><span class="toc-number">6.</span> <span class="toc-text">本机电脑创建ssh公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="toc-number">7.</span> <span class="toc-text">配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="toc-number">8.</span> <span class="toc-text">安装nginx</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%9C%BA%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">本机配置:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAhexo%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.</span> <span class="toc-text">创建hexo文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">部署到云服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number"></span> <span class="toc-text">域名解析</span></a></li></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/14/DeployECS/" title="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析"><img src="https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析"></a><div class="content"><a class="title" href="/2021/11/14/DeployECS/" title="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析">Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析</a><time datetime="2021-11-14T13:36:13.000Z" title="发表于 2021-11-14 21:36:13">2021-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/ESPTCP/" title="ESP8266安卓TCP客户端开发（含全部源码）"><img src="https://p1.qhimg.com/bdm/1000_618_80/t01cce746262dcfe657.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ESP8266安卓TCP客户端开发（含全部源码）"></a><div class="content"><a class="title" href="/2021/11/13/ESPTCP/" title="ESP8266安卓TCP客户端开发（含全部源码）">ESP8266安卓TCP客户端开发（含全部源码）</a><time datetime="2021-11-12T16:28:39.000Z" title="发表于 2021-11-13 00:28:39">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/df-sed-awk-du-grep/" title="df-sed-awk-du-grep"><img src="https://p6.qhimg.com/bdm/1000_618_80/t01da9cea63827138d9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="df-sed-awk-du-grep"></a><div class="content"><a class="title" href="/2021/11/13/df-sed-awk-du-grep/" title="df-sed-awk-du-grep">df-sed-awk-du-grep</a><time datetime="2021-11-12T16:02:28.000Z" title="发表于 2021-11-13 00:02:28">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/12/AndroidSQlite/" title="AndroidSQlite"><img src="https://p4.qhimg.com/bdm/1000_618_80/t019cde9afff4ea2484.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AndroidSQlite"></a><div class="content"><a class="title" href="/2021/11/12/AndroidSQlite/" title="AndroidSQlite">AndroidSQlite</a><time datetime="2021-11-12T15:48:36.000Z" title="发表于 2021-11-12 23:48:36">2021-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/12/BaiduVC/" title="百度语音助手集成到Fragment里面怎么避坑？"><img src="https://p1.qhimg.com/bdm/1000_618_80/t011fafa2d5a51becd2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="百度语音助手集成到Fragment里面怎么避坑？"></a><div class="content"><a class="title" href="/2021/11/12/BaiduVC/" title="百度语音助手集成到Fragment里面怎么避坑？">百度语音助手集成到Fragment里面怎么避坑？</a><time datetime="2021-11-12T15:44:55.000Z" title="发表于 2021-11-12 23:44:55">2021-11-12</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Kizai</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">好好生活</div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'f51urRPc7You6ygYs025nDgv-gzGzoHsz',
+      appKey: 'kfxaO70uTvknbBbKJqXAkBeG',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><link rel="stylesheet" href="/css/myfooter.css"><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="//code.tidio.co/ckta2upr0jbiajh9gbsi7e6yt3nblxkk.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax="">
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax="" src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
