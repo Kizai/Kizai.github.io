@@ -1,0 +1,1180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Wget-Curl-Lwp-request | KizaiBlog</title><meta name="keywords" content="Linux,Shell"><meta name="author" content="Kizai"><meta name="copyright" content="Kizai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="wget命令参考链接wget 名字Wget - The non-interactive network downloader. 非交互式网络下载程序。  wget命令描述 GNU Wget是一个免费实用程序，用于从Web非交互式下载文件。它支持HTTP、HTTPS和FTP协议，以及通过HTTP代理进行检索。 Wget是非交互式的，这意味着它可以在后台工作，而用户是没有登录。这允许您启动检索和断开与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wget-Curl-Lwp-request">
+<meta property="og:url" content="http://www.kizaiblog.cn/2021/11/21/Wget-Curl-Lwp-request/index.html">
+<meta property="og:site_name" content="KizaiBlog">
+<meta property="og:description" content="wget命令参考链接wget 名字Wget - The non-interactive network downloader. 非交互式网络下载程序。  wget命令描述 GNU Wget是一个免费实用程序，用于从Web非交互式下载文件。它支持HTTP、HTTPS和FTP协议，以及通过HTTP代理进行检索。 Wget是非交互式的，这意味着它可以在后台工作，而用户是没有登录。这允许您启动检索和断开与">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://browser9.qhimg.com/bdm/1000_618_80/t015d4f327880dddb26.jpg">
+<meta property="article:published_time" content="2021-11-21T04:58:10.000Z">
+<meta property="article:modified_time" content="2021-11-21T05:00:45.511Z">
+<meta property="article:author" content="Kizai">
+<meta property="article:tag" content="Linux,Shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://browser9.qhimg.com/bdm/1000_618_80/t015d4f327880dddb26.jpg"><link rel="shortcut icon" href="https://gitee.com/Kizai/blogimages/raw/master/img/202111082231257.jpg"><link rel="canonical" href="http://www.kizaiblog.cn/2021/11/21/Wget-Curl-Lwp-request/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Wget-Curl-Lwp-request',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-21 13:00:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style><style type="text/css">#toggle-sidebar {left:100px}</style><link rel="stylesheet" href="/css/myheadcss.css"><link rel="stylesheet" href="/css/bgcss.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="KizaiBlog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gitee.com/Kizai/blogimages/raw/master/img/202111082232482.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link faa-float animated"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart card-announcement-animation faa-float animated"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://browser9.qhimg.com/bdm/1000_618_80/t015d4f327880dddb26.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">KizaiBlog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link faa-float animated"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart card-announcement-animation faa-float animated"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Wget-Curl-Lwp-request</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-21T04:58:10.000Z" title="发表于 2021-11-21 12:58:10">2021-11-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-21T05:00:45.511Z" title="更新于 2021-11-21 13:00:45">2021-11-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux-Shell/">Linux,Shell</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Wget-Curl-Lwp-request"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img" style="background-image: url('https://browser9.qhimg.com/bdm/1000_618_80/t015d4f327880dddb26.jpg');"></div><article class="post-content" id="article-container"><h1 id="wget命令"><a href="#wget命令" class="headerlink" title="wget命令"></a>wget命令</h1><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/wget/manual/wget.pdf">wget</a></p>
+<h3 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h3><pre><code>Wget - The non-interactive network downloader. 非交互式网络下载程序。 
+</code></pre><h3 id="wget命令描述"><a href="#wget命令描述" class="headerlink" title="wget命令描述"></a>wget命令描述</h3><ul>
+<li>GNU Wget是一个免费实用程序，用于从Web非交互式下载文件。它支持HTTP、HTTPS和FTP协议，以及通过HTTP代理进行检索。</li>
+<li>Wget是非交互式的，这意味着它可以在后台工作，而用户是没有登录。这允许您启动检索和断开与系统的连接，让我们完成这项工作。相比之下，大多数Web浏览器都需要常量用户的存在，这可能是一个很大的障碍时，传输大量的数据。</li>
+<li>Wget可以遵循HTML、XHTML和CSS页面中的链接，以创建本地版本的远程网站，完全重新创建原始网站的目录结构。这是有时也称为“递归下载”。在这样做的同时，Wget尊重机器人排除标准(/robots.txt)。可以指示Wget将链接转换为下载的文件要指向本地文件，以便脱机查看。</li>
+<li>Wget的设计是为了在缓慢或不稳定的网络连接上保持健壮;如果一个由于网络问题导致下载失败，它将继续重试，直到整个文件被检索。如果服务器支持重获取，它将指示服务器从它停止的地方继续下载。 </li>
+<li>1）支持断点下传功能（2）同时支持FTP和HTTP下载方式（3）支持代理服务器（4）设置方便简单；5）程序小，完全免费；<h3 id="wget命令格式"><a href="#wget命令格式" class="headerlink" title="wget命令格式"></a>wget命令格式</h3><code>wget [参数列表] [目标软件、网页的网址]</code></li>
+</ul>
+<h4 id="1、启动类参数"><a href="#1、启动类参数" class="headerlink" title="1、启动类参数"></a>1、启动类参数</h4><p>这一类参数主要提供软件的一些基本信息；　　</p>
+<ul>
+<li>-V,—version 显示软件版本号然后退出；</li>
+<li>-h,—help显示软件帮助信息；</li>
+<li>-e,—execute=COMMAND 执行一个 “.wgetrc”命令<br>以上每一个功能有长短两个参数，长短功能一样，都可以使用。需要注意的是，这里的-e参数是执行一个.wgettrc的命令，.wgettrc命令其实是一个参数列表，直接将软件需要的参数写在一起就可以了。</li>
+</ul>
+<h4 id="2、文件处理参数"><a href="#2、文件处理参数" class="headerlink" title="2、文件处理参数"></a>2、文件处理参数</h4><p>这类参数定义软件log文件的输出方式等；</p>
+<ul>
+<li>-o,—output-file=FILE 将软件输出信息保存到文件；</li>
+<li>-a,—append-output=FILE将软件输出信息追加到文件；</li>
+<li>-d,—debug显示输出信息；</li>
+<li>-q,—quiet 不显示输出信息；</li>
+<li>-i,—input-file=FILE 从文件中取得URL；</li>
+<li>以上参数对于攻击者比较有用，我们来看看具体使用；<ul>
+<li>例1：下载192.168.1.168首页并且显示下载信息<br>  <code>wget -d http://192.168.1.168</code></li>
+<li>例2：下载192.168.1.168首页并且不显示任何信息<br>  <code>wget -q http://192.168.1.168</code></li>
+<li>例3：下载filelist.txt中所包含的链接的所有文件  <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">wget -i filelist.txt</span><br><span class="line">wget -np -m -l5  http://lemutechnology.com //不下载本站所链接的其它站点内容，5级目录结构</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3、下载参数"><a href="#3、下载参数" class="headerlink" title="3、下载参数"></a>3、下载参数</h4><p>下载参数定义下载重复次数、保存文件名等；</p>
+<ul>
+<li>-t,—tries=NUMBER 是否下载次数（0表示无穷次）</li>
+<li>-O —output-document=FILE下载文件保存为别的文件名</li>
+<li>-nc, —no-clobber 不要覆盖已经存在的文件</li>
+<li>-N,—timestamping只下载比本地新的文件</li>
+<li>-T,—timeout=SECONDS 设置超时时间</li>
+<li>-Y,—proxy=on/off 关闭代理</li>
+<li>例：下载192.168.1.168的首页并将下载过程中的的输入信息保存到test.htm文件中<br>  <code>wget -o test.htm http://192.168.1.168</code></li>
+</ul>
+<h4 id="4、目录参数"><a href="#4、目录参数" class="headerlink" title="4、目录参数"></a>4、目录参数</h4><p>目录参数主要设置下载文件保存目录与原来文件（服务器文件）的目录对应关系；</p>
+<ul>
+<li>-nd  —no-directories 不建立目录</li>
+<li>-x,—force-directories 强制建立目录</li>
+<li>可能现在我们对这里的目录还不是很了解，我们来看一个举例</li>
+<li>例：下载192.168.1.168的首页，并且保持网站结构<br>  <code>wget -x http://192.168.1.168</code> </li>
+</ul>
+<h4 id="5、HTTP参数"><a href="#5、HTTP参数" class="headerlink" title="5、HTTP参数"></a>5、HTTP参数</h4><p>HTTP参数设置一些与HTTP下载有关的属性；</p>
+<ul>
+<li>—http-user=USER设置HTTP用户</li>
+<li>—http-passwd=PASS设置HTTP密码</li>
+<li>—proxy-user=USER设置代理用户</li>
+<li>—proxy-passwd=PASS设置代理密码</li>
+<li>以上参数主要设置HTTP和代理的用户、密码；</li>
+</ul>
+<p>6、递归参数设置<br>在下载一个网站或者网站的一个目录的时候，我们需要知道的下载的层次，这些参数就可以设置；</p>
+<ul>
+<li>-r,—recursive 下载整个网站、目录（小心使用）</li>
+<li>-l,—level=NUMBER 下载层次</li>
+<li>例：下载整个网站<br> <code>wget -r http://192.168.1.168</code></li>
+</ul>
+<h4 id="7、递归允许与拒绝选项参数"><a href="#7、递归允许与拒绝选项参数" class="headerlink" title="7、递归允许与拒绝选项参数"></a>7、递归允许与拒绝选项参数</h4><p>下载一个网站的时候，为了尽量快，有些文件可以选择下载，比如图片和声音，在这里可以设置；</p>
+<ul>
+<li>-A,—accept=LIST 可以接受的文件类型</li>
+<li>-R,—reject=LIST拒绝接受的文件类型</li>
+<li>-D,—domains=LIST可以接受的域名</li>
+<li>—exclude-domains=LIST拒绝的域名</li>
+<li>-L,—relative 下载关联链接</li>
+<li>—follow-ftp 只下载FTP链接</li>
+<li>-H,—span-hosts 可以下载外面的主机</li>
+<li>-I,—include-directories=LIST允许的目录</li>
+<li>-X,—exclude-directories=LIST 拒绝的目录</li>
+</ul>
+<h3 id="wget各项参数表"><a href="#wget各项参数表" class="headerlink" title="wget各项参数表"></a>wget各项参数表</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-V,  —version</td>
+<td>显示wget的版本后退出</td>
+</tr>
+<tr>
+<td>-h,  —help</td>
+<td>打印语法帮助</td>
+</tr>
+<tr>
+<td>-b,  —background</td>
+<td>启动后转入后台执行</td>
+</tr>
+<tr>
+<td>-e,  —execute=COMMAND</td>
+<td>执行`.wgetrc’格式的命令，wgetrc格式参见/etc/wgetrc或~/.wgetrc记录和输入文件</td>
+</tr>
+<tr>
+<td>-o,  —output-file=FILE</td>
+<td>把记录写到FILE文件中</td>
+</tr>
+<tr>
+<td>-a,  —append-output=FILE</td>
+<td>把记录追加到FILE文件中</td>
+</tr>
+<tr>
+<td>-d,  —debug</td>
+<td>打印调试输出</td>
+</tr>
+<tr>
+<td>-q,  —quiet</td>
+<td>安静模式(没有输出)</td>
+</tr>
+<tr>
+<td>-v,  —verbose</td>
+<td>冗长模式(这是缺省设置)</td>
+</tr>
+<tr>
+<td>-nv, —non-verbose</td>
+<td>关掉冗长模式，但不是安静模式</td>
+</tr>
+<tr>
+<td>-i,  —input-file=FILE</td>
+<td>下载在FILE文件中出现的URLs</td>
+</tr>
+<tr>
+<td>-F,  —force-html</td>
+<td>把输入文件当作HTML格式文件对待</td>
+</tr>
+<tr>
+<td>-B,  —base=URL</td>
+<td>将URL作为在-F -i参数指定的文件中出现的相对链接的前缀</td>
+</tr>
+<tr>
+<td>—sslcertfile=FILE</td>
+<td>可选客户端证书</td>
+</tr>
+<tr>
+<td>—sslcertkey=KEYFILE</td>
+<td>可选客户端证书的KEYFILE</td>
+</tr>
+<tr>
+<td>—egd-file=FILE</td>
+<td>指定EGD socket的文件名下载</td>
+</tr>
+<tr>
+<td>—bind-address=ADDRESS</td>
+<td>指定本地使用地址(主机名或IP，当本地有多个IP或名字时使用)</td>
+</tr>
+<tr>
+<td>-t,  —tries=NUMBER</td>
+<td>设定最大尝试链接次数(0 表示无限制).</td>
+</tr>
+<tr>
+<td>-O   —output-document=FILE</td>
+<td>把文档写到FILE文件中</td>
+</tr>
+<tr>
+<td>-nc, —no-clobber</td>
+<td>不要覆盖存在的文件或使用.#前缀</td>
+</tr>
+<tr>
+<td>-c,  —continue</td>
+<td>接着下载没下载完的文件</td>
+</tr>
+<tr>
+<td>—progress=TYPE</td>
+<td>设定进程条标记</td>
+</tr>
+<tr>
+<td>-N,  —timestamping</td>
+<td>不要重新下载文件除非比本地文件新</td>
+</tr>
+<tr>
+<td>-S,  —server-response</td>
+<td>打印服务器的回应</td>
+</tr>
+<tr>
+<td>—spider</td>
+<td>不下载任何东西</td>
+</tr>
+<tr>
+<td>-T,  —timeout=SECONDS</td>
+<td>设定响应超时的秒数</td>
+</tr>
+<tr>
+<td>-w,  —wait=SECONDS</td>
+<td>两次尝试之间间隔SECONDS秒</td>
+</tr>
+<tr>
+<td>—waitretry=SECONDS</td>
+<td>在重新链接之间等待1…SECONDS秒</td>
+</tr>
+<tr>
+<td>—random-wait</td>
+<td>在下载之间等待0…2*WAIT秒</td>
+</tr>
+<tr>
+<td>-Y,  —proxy=on/off</td>
+<td>打开或关闭代理</td>
+</tr>
+<tr>
+<td>-Q,  —quota=NUMBER</td>
+<td>设置下载的容量限制</td>
+</tr>
+<tr>
+<td>—limit-rate=RATE</td>
+<td>限定下载输率目录</td>
+</tr>
+<tr>
+<td>-nd  —no-directories</td>
+<td>不创建目录</td>
+</tr>
+<tr>
+<td>-x,  —force-directories</td>
+<td>强制创建目录</td>
+</tr>
+<tr>
+<td>-nH, —no-host-directories</td>
+<td>不创建主机目录</td>
+</tr>
+<tr>
+<td>-P,  —directory-prefix=PREFIX</td>
+<td>将文件保存到目录 PREFIX/…</td>
+</tr>
+<tr>
+<td>—cut-dirs=NUMBER</td>
+<td>忽略 NUMBER层远程目录HTTP 选项</td>
+</tr>
+<tr>
+<td>—http-user=USER</td>
+<td>设定HTTP用户名为 USER.</td>
+</tr>
+<tr>
+<td>—http-passwd=PASS</td>
+<td>设定http密码为 PASS.</td>
+</tr>
+<tr>
+<td>-C,  —cache=on/off</td>
+<td>允许/不允许服务器端的数据缓存 (一般情况下允许).</td>
+</tr>
+<tr>
+<td>-E,  —html-extension</td>
+<td>将所有text/html文档以.html扩展名保存</td>
+</tr>
+<tr>
+<td>—ignore-length</td>
+<td>忽略 `Content-Length’头域</td>
+</tr>
+<tr>
+<td>—header=STRING</td>
+<td>在headers中插入字符串 STRING</td>
+</tr>
+<tr>
+<td>—proxy-user=USER</td>
+<td>设定代理的用户名为 USER</td>
+</tr>
+<tr>
+<td>—proxy-passwd=PASS</td>
+<td>设定代理的密码为 PASS</td>
+</tr>
+<tr>
+<td>—referer=URL</td>
+<td>在HTTP请求中包含 `Referer: URL’头</td>
+</tr>
+<tr>
+<td>-s,  —save-headers</td>
+<td>保存HTTP头到文件</td>
+</tr>
+<tr>
+<td>-U,  —user-agent=AGENT</td>
+<td>设定代理的名称为 AGENT而不是 Wget/VERSION.</td>
+</tr>
+<tr>
+<td>—no-http-keep-alive</td>
+<td>关闭 HTTP活动链接 (永远链接).</td>
+</tr>
+<tr>
+<td>—cookies=off</td>
+<td>不使用 cookies.</td>
+</tr>
+<tr>
+<td>—load-cookies=FILE</td>
+<td>在开始会话前从文件 FILE中加载cookie</td>
+</tr>
+<tr>
+<td>—save-cookies=FILE</td>
+<td>在会话结束后将 cookies保存到 FILE文件中FTP 选项</td>
+</tr>
+<tr>
+<td>-nr, —dont-remove-listing</td>
+<td>不移走 `.listing’文件</td>
+</tr>
+<tr>
+<td>-g,  —glob=on/off</td>
+<td>打开或关闭文件名的 globbing机制</td>
+</tr>
+<tr>
+<td>—passive-ftp</td>
+<td>使用被动传输模式 (缺省值).</td>
+</tr>
+<tr>
+<td>—active-ftp</td>
+<td>使用主动传输模式</td>
+</tr>
+<tr>
+<td>—retr-symlinks</td>
+<td>在递归的时候，将链接指向文件(而不是目录)递归下载</td>
+</tr>
+<tr>
+<td>-r,  —recursive</td>
+<td>递归下载－－慎用!</td>
+</tr>
+<tr>
+<td>-l,  —level=NUMBER</td>
+<td>最大递归深度 (inf 或 0 代表无穷).</td>
+</tr>
+<tr>
+<td>—delete-after</td>
+<td>在现在完毕后局部删除文件</td>
+</tr>
+<tr>
+<td>-k,  —convert-links</td>
+<td>转换非相对链接为相对链接</td>
+</tr>
+<tr>
+<td>-K,  —backup-converted</td>
+<td>在转换文件X之前，将之备份为 X.orig</td>
+</tr>
+<tr>
+<td>-m,  —mirror</td>
+<td>等价于 -r -N -l inf -nr.</td>
+</tr>
+<tr>
+<td>-p,  —page-requisites</td>
+<td>下载显示HTML文件的所有图片递归下载中的包含和不包含(accept/reject)</td>
+</tr>
+<tr>
+<td>-A,  —accept=LIST</td>
+<td>分号分隔的被接受扩展名的列表</td>
+</tr>
+<tr>
+<td>-R,  —reject=LIST</td>
+<td>分号分隔的不被接受的扩展名的列表</td>
+</tr>
+<tr>
+<td>-D,  —domains=LIST</td>
+<td>分号分隔的被接受域的列表</td>
+</tr>
+<tr>
+<td>—exclude-domains=LIST</td>
+<td>分号分隔的不被接受的域的列表</td>
+</tr>
+<tr>
+<td>—follow-ftp</td>
+<td>跟踪HTML文档中的FTP链接</td>
+</tr>
+<tr>
+<td>—follow-tags=LIST</td>
+<td>分号分隔的被跟踪的HTML标签的列表</td>
+</tr>
+<tr>
+<td>-G,  —ignore-tags=LIST</td>
+<td>分号分隔的被忽略的HTML标签的列表</td>
+</tr>
+<tr>
+<td>-H,  —span-hosts</td>
+<td>当递归时转到外部主机</td>
+</tr>
+<tr>
+<td>-L,  —relative</td>
+<td>仅仅跟踪相对链接</td>
+</tr>
+<tr>
+<td>-I,  —include-directories=LIST</td>
+<td>允许目录的列表</td>
+</tr>
+<tr>
+<td>-X,  —exclude-directories=LIST</td>
+<td>不被包含目录的列表</td>
+</tr>
+<tr>
+<td>-np, —no-parent</td>
+<td>不要追溯到父目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>使用<code>wget</code>命令检查网页的状态码：<br></p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">wget -spider -nv google.com</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h1 id="curl命令"><a href="#curl命令" class="headerlink" title="curl命令"></a>curl命令</h1><h3 id="名字-1"><a href="#名字-1" class="headerlink" title="名字"></a>名字</h3><p>curl -transfer a url :传输一个url 或叫客户端(client)的url工具。</p>
+<h3 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h3><p><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/curl.1.html">curl</a></p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>curl是一种使用支持的协议（DICT、FILE、FTP、FTPS、GOPHER、HTTP、HTTPS、IMAP、IMAPS、LDAP、LDAPS、MQTT、POP3、POP3S、RTMP、 RTMPS、RTSP、SCP、SFTP、SMB、SMBS、SMTP、SMTPS、TELNET 或 TFTP）。该命令旨在无需用户交互即可工作。 </p>
+<h3 id="curl各项参数表"><a href="#curl各项参数表" class="headerlink" title="curl各项参数表"></a>curl各项参数表</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a/—append</td>
+<td>上传文件时，附加到目标文件</td>
+</tr>
+<tr>
+<td>-A/—user-agent <string></string></td>
+<td>设置用户代理发送给服务器</td>
+</tr>
+<tr>
+<td>- anyauth</td>
+<td>可以使用“任何”身份验证方法</td>
+</tr>
+<tr>
+<td>-b/—cookie <name=string file=""></name=string></td>
+<td>cookie字符串或文件读取位置</td>
+</tr>
+<tr>
+<td>- basic</td>
+<td>使用HTTP基本验证</td>
+</tr>
+<tr>
+<td>-B/—use-ascii</td>
+<td>使用ASCII /文本传输</td>
+</tr>
+<tr>
+<td>-c/—cookie-jar</td>
+<td><file> 操作结束后把cookie写入到这个文件中</file></td>
+</tr>
+<tr>
+<td>-C/—continue-at</td>
+<td><offset>  断点续转</offset></td>
+</tr>
+<tr>
+<td>-d/—data <data></data></td>
+<td>HTTP POST方式传送数据</td>
+</tr>
+<tr>
+<td>—data-ascii <data></data></td>
+<td>以ascii的方式post数据</td>
+</tr>
+<tr>
+<td>—data-binary <data></data></td>
+<td>以二进制的方式post数据</td>
+</tr>
+<tr>
+<td>—negotiate</td>
+<td>使用HTTP身份验证</td>
+</tr>
+<tr>
+<td>—digest</td>
+<td>使用数字身份验证</td>
+</tr>
+<tr>
+<td>—disable-eprt</td>
+<td>禁止使用EPRT或LPRT</td>
+</tr>
+<tr>
+<td>—disable-epsv</td>
+<td>禁止使用EPSV</td>
+</tr>
+<tr>
+<td>-D/—dump-header <file></file></td>
+<td>把header信息写入到该文件中</td>
+</tr>
+<tr>
+<td>—egd-file <file></file></td>
+<td>为随机数据(SSL)设置EGD socket路径</td>
+</tr>
+<tr>
+<td>—tcp-nodelay</td>
+<td>使用TCP_NODELAY选项</td>
+</tr>
+<tr>
+<td>-e/—referer</td>
+<td>来源网址</td>
+</tr>
+<tr>
+<td>-E/—cert <cert[:passwd]></cert[:passwd]></td>
+<td>客户端证书文件和密码 (SSL)</td>
+</tr>
+<tr>
+<td>—cert-type <type></type></td>
+<td>证书文件类型 (DER/PEM/ENG) (SSL)</td>
+</tr>
+<tr>
+<td>—key <key></key></td>
+<td>私钥文件名 (SSL)</td>
+</tr>
+<tr>
+<td>—key-type <type></type></td>
+<td>私钥文件类型 (DER/PEM/ENG) (SSL)</td>
+</tr>
+<tr>
+<td>—pass  <pass></pass></td>
+<td>私钥密码 (SSL)</td>
+</tr>
+<tr>
+<td>—engine <eng></eng></td>
+<td>加密引擎使用 (SSL). “—engine list” for list</td>
+</tr>
+<tr>
+<td>—cacert <file></file></td>
+<td>CA证书 (SSL)</td>
+</tr>
+<tr>
+<td>—capath <directory></directory></td>
+<td>CA目录 (made using c_rehash) to verify peer against (SSL)</td>
+</tr>
+<tr>
+<td>—ciphers <list></list></td>
+<td>SSL密码</td>
+</tr>
+<tr>
+<td>—compressed</td>
+<td>要求返回是压缩的形势 (using deflate or gzip)</td>
+</tr>
+<tr>
+<td>—connect-timeout <seconds></seconds></td>
+<td>设置最大请求时间</td>
+</tr>
+<tr>
+<td>—create-dirs</td>
+<td>建立本地目录的目录层次结构</td>
+</tr>
+<tr>
+<td>—crlf</td>
+<td>上传是把LF转变成CRLF</td>
+</tr>
+<tr>
+<td>-f/—fail</td>
+<td>连接失败时不显示http错误</td>
+</tr>
+<tr>
+<td>—ftp-create-dirs</td>
+<td>如果远程目录不存在，创建远程目录</td>
+</tr>
+<tr>
+<td>—ftp-method [multicwd/nocwd/singlecwd]</td>
+<td>控制CWD的使用</td>
+</tr>
+<tr>
+<td>—ftp-pasv</td>
+<td>使用 PASV/EPSV 代替端口</td>
+</tr>
+<tr>
+<td>—ftp-skip-pasv-ip</td>
+<td>使用PASV的时候,忽略该IP地址</td>
+</tr>
+<tr>
+<td>—ftp-ssl</td>
+<td>尝试用 SSL/TLS 来进行ftp数据传输</td>
+</tr>
+<tr>
+<td>—ftp-ssl-reqd</td>
+<td>要求用 SSL/TLS 来进行ftp数据传输</td>
+</tr>
+<tr>
+<td>-F/—form <name=content></name=content></td>
+<td>模拟http表单提交数据</td>
+</tr>
+<tr>
+<td>-form-string <name=string></name=string></td>
+<td>模拟http表单提交数据</td>
+</tr>
+<tr>
+<td>-g/—globoff</td>
+<td>禁用网址序列和范围使用{}和[]</td>
+</tr>
+<tr>
+<td>-G/—get</td>
+<td>以get的方式来发送数据</td>
+</tr>
+<tr>
+<td>-h/—help</td>
+<td>帮助</td>
+</tr>
+<tr>
+<td>-H/—header</td>
+<td><line>自定义头信息传递给服务器</line></td>
+</tr>
+<tr>
+<td>—ignore-content-length</td>
+<td>忽略的HTTP头信息的长度</td>
+</tr>
+<tr>
+<td>-i/—include</td>
+<td>输出时包括protocol头信息</td>
+</tr>
+<tr>
+<td>-I/—head</td>
+<td>只显示文档信息</td>
+</tr>
+<tr>
+<td>- 界面<interface></interface></td>
+<td>指定网络接口/地址使用</td>
+</tr>
+<tr>
+<td>- krb4</td>
+<td>&lt;级别&gt;启用与指定的安全级别krb4</td>
+</tr>
+<tr>
+<td>-j/—junk-session-cookies</td>
+<td>读取文件进忽略session cookie</td>
+</tr>
+<tr>
+<td>—interface <interface></interface></td>
+<td>使用指定网络接口/地址</td>
+</tr>
+<tr>
+<td>—krb4 <level></level></td>
+<td>使用指定安全级别的krb4</td>
+</tr>
+<tr>
+<td>-k/—insecure</td>
+<td>允许不使用证书到SSL站点</td>
+</tr>
+<tr>
+<td>-K/—config</td>
+<td>指定的配置文件读取</td>
+</tr>
+<tr>
+<td>-l/—list-only</td>
+<td>列出ftp目录下的文件名称</td>
+</tr>
+<tr>
+<td>—limit-rate <rate></rate></td>
+<td>设置传输速度</td>
+</tr>
+<tr>
+<td>—local-port<num></num></td>
+<td>强制使用本地端口号</td>
+</tr>
+<tr>
+<td>-m/—max-time <seconds></seconds></td>
+<td>设置最大传输时间</td>
+</tr>
+<tr>
+<td>—max-redirs <num></num></td>
+<td>设置最大读取的目录数</td>
+</tr>
+<tr>
+<td>—max-filesize <bytes></bytes></td>
+<td>设置最大下载的文件总量</td>
+</tr>
+<tr>
+<td>-M/—manual</td>
+<td>显示全手动</td>
+</tr>
+<tr>
+<td>-n/—netrc</td>
+<td>从netrc文件中读取用户名和密码</td>
+</tr>
+<tr>
+<td>—netrc-optional</td>
+<td>使用 .netrc 或者 URL来覆盖-n</td>
+</tr>
+<tr>
+<td>—ntlm</td>
+<td>使用 HTTP NTLM 身份验证</td>
+</tr>
+<tr>
+<td>-N/—no-buffer</td>
+<td>禁用缓冲输出</td>
+</tr>
+<tr>
+<td>-o/—output</td>
+<td>把输出写到该文件中</td>
+</tr>
+<tr>
+<td>-O/—remote-name</td>
+<td>把输出写到该文件中，保留远程文件的文件名</td>
+</tr>
+<tr>
+<td>-p/—proxytunnel</td>
+<td>使用HTTP代理</td>
+</tr>
+<tr>
+<td>—proxy-anyauth</td>
+<td>选择任一代理身份验证方法</td>
+</tr>
+<tr>
+<td>—proxy-basic</td>
+<td>在代理上使用基本身份验证</td>
+</tr>
+<tr>
+<td>—proxy-digest</td>
+<td>在代理上使用数字身份验证</td>
+</tr>
+<tr>
+<td>—proxy-ntlm</td>
+<td>在代理上使用ntlm身份验证</td>
+</tr>
+<tr>
+<td>-P/—ftp-port <address></address></td>
+<td>使用端口地址，而不是使用PASV</td>
+</tr>
+<tr>
+<td>-Q/—quote <cmd></cmd></td>
+<td>文件传输前，发送命令到服务器</td>
+</tr>
+<tr>
+<td>-r/—range <range></range></td>
+<td>检索来自HTTP/1.1或FTP服务器字节范围</td>
+</tr>
+<tr>
+<td>—range-file</td>
+<td>读取（SSL）的随机文件</td>
+</tr>
+<tr>
+<td>-R/—remote-time</td>
+<td>在本地生成文件时，保留远程文件时间</td>
+</tr>
+<tr>
+<td>—retry <num></num></td>
+<td>传输出现问题时，重试的次数</td>
+</tr>
+<tr>
+<td>—retry-delay <seconds></seconds></td>
+<td>传输出现问题时，设置重试间隔时间</td>
+</tr>
+<tr>
+<td>—retry-max-time <seconds></seconds></td>
+<td>传输出现问题时，设置最大重试时间</td>
+</tr>
+<tr>
+<td>-s/—silent</td>
+<td>静音模式。不输出任何东西</td>
+</tr>
+<tr>
+<td>-S/—show-error</td>
+<td>显示错误</td>
+</tr>
+<tr>
+<td>—socks4 <host[:port]></host[:port]></td>
+<td>用socks4代理给定主机和端口</td>
+</tr>
+<tr>
+<td>—socks5 <host[:port]></host[:port]></td>
+<td>用socks5代理给定主机和端口</td>
+</tr>
+<tr>
+<td>—stderr <file></file></td>
+<td></td>
+</tr>
+<tr>
+<td>-t/—telnet-option <opt=val></opt=val></td>
+<td>Telnet选项设置</td>
+</tr>
+<tr>
+<td>—trace <file></file></td>
+<td>对指定文件进行debug</td>
+</tr>
+<tr>
+<td>—trace-ascii <file></file></td>
+<td>Like —跟踪但没有hex输出</td>
+</tr>
+<tr>
+<td>—trace-time</td>
+<td>跟踪/详细输出时，添加时间戳</td>
+</tr>
+<tr>
+<td>-T/—upload-file <file></file></td>
+<td>上传文件</td>
+</tr>
+<tr>
+<td>—url <url></url></td>
+<td>Spet URL to work with</td>
+</tr>
+<tr>
+<td>-u/—user <user[:password]></user[:password]></td>
+<td>设置服务器的用户和密码</td>
+</tr>
+<tr>
+<td>-U/—proxy-user <user[:password]></user[:password]></td>
+<td>设置代理用户名和密码</td>
+</tr>
+<tr>
+<td>-v/—verbose</td>
+<td></td>
+</tr>
+<tr>
+<td>-V/—version</td>
+<td>显示版本信息</td>
+</tr>
+<tr>
+<td>-w/—write-out [format]</td>
+<td>什么输出完成后</td>
+</tr>
+<tr>
+<td>-x/—proxy <host[:port]></host[:port]></td>
+<td>在给定的端口上使用HTTP代理</td>
+</tr>
+<tr>
+<td>-X/—request <command></command></td>
+<td>指定什么命令</td>
+</tr>
+<tr>
+<td>-y/—speed-time</td>
+<td>放弃限速所要的时间。默认为30</td>
+</tr>
+<tr>
+<td>-Y/—speed-limit</td>
+<td>停止传输速度的限制，速度时间’秒</td>
+</tr>
+<tr>
+<td>-z/—time-cond</td>
+<td>传送时间设置</td>
+</tr>
+<tr>
+<td>-0/—http1.0</td>
+<td>使用HTTP 1.0</td>
+</tr>
+<tr>
+<td>-1/—tlsv1</td>
+<td>使用TLSv1（SSL）</td>
+</tr>
+<tr>
+<td>-2/—sslv2</td>
+<td>使用SSLv2的（SSL）</td>
+</tr>
+<tr>
+<td>-3/—sslv3</td>
+<td>使用的SSLv3（SSL）</td>
+</tr>
+<tr>
+<td>—3p-quote</td>
+<td>like -Q for the source URL for 3rd party transfer</td>
+</tr>
+<tr>
+<td>—3p-url</td>
+<td>使用url，进行第三方传送</td>
+</tr>
+<tr>
+<td>—3p-user</td>
+<td>使用用户名和密码，进行第三方传送</td>
+</tr>
+<tr>
+<td>-4/—ipv4</td>
+<td>使用IP4</td>
+</tr>
+<tr>
+<td>-6/—ipv6</td>
+<td>使用IP6</td>
+</tr>
+<tr>
+<td>-#/—progress-bar</td>
+<td>用进度条显示当前的传送状态</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#使用curl命令检查http服务器的状态</span></span><br><span class="line"><span class="comment">#-m设置curl不管访问成功或失败，最大消耗的时间为5秒，5秒连接服务为相应则视为无法连接</span></span><br><span class="line"><span class="comment">#-s设置静默连接，不显示连接时的连接速度、时间消耗等信息</span></span><br><span class="line"><span class="comment">#-o将curl下载的页面内容导出到/dev/null(默认会在屏幕显示页面内容)</span></span><br><span class="line"><span class="comment">#-w设置curl命令需要显示的内容%{http_code}，指定curl返回服务器的状态码</span></span><br><span class="line">curl -m 5 -s-o /dev/null -w %{http_code} https://www.google.com</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="lwp-request命令"><a href="#lwp-request命令" class="headerlink" title="lwp-request命令"></a>lwp-request命令</h1><p><a target="_blank" rel="noopener" href="https://linux.die.net/man/1/lwp-request">lwp-request</a></p>
+<h3 id="名字-2"><a href="#名字-2" class="headerlink" title="名字"></a>名字</h3><p>lwp-request, GET, POST, HEAD - 简单的命令行用户代理</p>
+<h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>lwp-request可用于向WWW服务器和您的本地文件系统发送请求。POST和 PUT方法的请求内容是从 stdin 读取的。响应的内容打印在标准输出上。错误消息打印在 stderr 上。该程序返回一个状态值，指示失败的 URL 的数量。</p>
+<h3 id="HEAD-命令参数选项"><a href="#HEAD-命令参数选项" class="headerlink" title="HEAD 命令参数选项"></a>HEAD 命令参数选项</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-m <method></method></td>
+<td>use method for the request (default is ‘HEAD’)</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>make request even if HEAD believes method is illegal</td>
+</tr>
+<tr>
+<td>-b <base></td>
+<td>Use the specified URL as base</td>
+</tr>
+<tr>
+<td>-t <timeout></timeout></td>
+<td>Set timeout value</td>
+</tr>
+<tr>
+<td>-i <time></time></td>
+<td>Set the If-Modified-Since header on the request</td>
+</tr>
+<tr>
+<td>-c <conttype></conttype></td>
+<td>use this content-type for POST, PUT, CHECKIN</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>Use text mode for content I/O</td>
+</tr>
+<tr>
+<td>-p <proxyurl></proxyurl></td>
+<td>use this as a proxy</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>don’t load proxy settings from environment</td>
+</tr>
+<tr>
+<td>-H <header></header></td>
+<td>send this HTTP header (you can specify several)</td>
+</tr>
+<tr>
+<td>-C <username>:<password></password></username></td>
+<td>provide credentials for basic authentication</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>Display method and URL before any response</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>Display request headers (implies -u)</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>Display response status code</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>Display response status chain (implies -u)</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>Display response headers (implies -s)</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>Display whole chain of headers (implies -S and -U)</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>Do not display content</td>
+</tr>
+<tr>
+<td>-o <format></format></td>
+<td>Process HTML content in various ways</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>Show program version</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>Print this message</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Kizai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.kizaiblog.cn/2021/11/21/Wget-Curl-Lwp-request/">http://www.kizaiblog.cn/2021/11/21/Wget-Curl-Lwp-request/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.kizaiblog.cn" target="_blank">KizaiBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux-Shell/">Linux,Shell</a></div><div class="post_share"><div class="social-share" data-image="https://browser9.qhimg.com/bdm/1000_618_80/t015d4f327880dddb26.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/11/14/DeployECS/"><img class="next-cover" src="https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/11/08/RE/" title="正则表达式匹配规则"><img class="cover" src="https://p6.qhimg.com/bdm/1000_618_80/t0111140caa88455e1f.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-08</div><div class="title">正则表达式匹配规则</div></div></a></div><div><a href="/2021/11/07/Tmux/" title="Tmux常用命令"><img class="cover" src="https://p7.qhimg.com/bdm/1000_618_80/t01d212999c10c8fddf.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-07</div><div class="title">Tmux常用命令</div></div></a></div><div><a href="/2021/11/13/df-sed-awk-du-grep/" title="df-sed-awk-du-grep"><img class="cover" src="https://p6.qhimg.com/bdm/1000_618_80/t01da9cea63827138d9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-13</div><div class="title">df-sed-awk-du-grep</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gitee.com/Kizai/blogimages/raw/master/img/202111082232482.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">Kizai</div><div class="author-info__description">本网站是个人的兴趣爱好，总结分享经验，记录生活点滴的平台</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42001163"><i class="iconfont icon-CSDN"></i><span>Kizai's CSDN Blog</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kizai" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kizai@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/1292381504" target="_blank" title="qq"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#wget%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">wget命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">1.0.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E5%AD%97"><span class="toc-number">1.0.2.</span> <span class="toc-text">名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wget%E5%91%BD%E4%BB%A4%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.0.3.</span> <span class="toc-text">wget命令描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wget%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.0.4.</span> <span class="toc-text">wget命令格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%90%AF%E5%8A%A8%E7%B1%BB%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">1、启动类参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">2、文件处理参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%B8%8B%E8%BD%BD%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">3、下载参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E7%9B%AE%E5%BD%95%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.4.4.</span> <span class="toc-text">4、目录参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81HTTP%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.4.5.</span> <span class="toc-text">5、HTTP参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E9%80%92%E5%BD%92%E5%85%81%E8%AE%B8%E4%B8%8E%E6%8B%92%E7%BB%9D%E9%80%89%E9%A1%B9%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.4.6.</span> <span class="toc-text">7、递归允许与拒绝选项参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wget%E5%90%84%E9%A1%B9%E5%8F%82%E6%95%B0%E8%A1%A8"><span class="toc-number">1.0.5.</span> <span class="toc-text">wget各项参数表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.0.6.</span> <span class="toc-text">例子</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#curl%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">curl命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E5%AD%97-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.0.3.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#curl%E5%90%84%E9%A1%B9%E5%8F%82%E6%95%B0%E8%A1%A8"><span class="toc-number">2.0.4.</span> <span class="toc-text">curl各项参数表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-1"><span class="toc-number">2.0.5.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lwp-request%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">lwp-request命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E5%AD%97-2"><span class="toc-number">3.0.1.</span> <span class="toc-text">名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">3.0.2.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD-%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0%E9%80%89%E9%A1%B9"><span class="toc-number">3.0.3.</span> <span class="toc-text">HEAD 命令参数选项</span></a></li></ol></li></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/21/Wget-Curl-Lwp-request/" title="Wget-Curl-Lwp-request"><img src="https://browser9.qhimg.com/bdm/1000_618_80/t015d4f327880dddb26.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Wget-Curl-Lwp-request"></a><div class="content"><a class="title" href="/2021/11/21/Wget-Curl-Lwp-request/" title="Wget-Curl-Lwp-request">Wget-Curl-Lwp-request</a><time datetime="2021-11-21T04:58:10.000Z" title="发表于 2021-11-21 12:58:10">2021-11-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/14/DeployECS/" title="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析"><img src="https://p0.qhimg.com/bdm/1000_618_80/t0175df336fa1a3ee79.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析"></a><div class="content"><a class="title" href="/2021/11/14/DeployECS/" title="Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析">Hexo 博客部署到阿里云ECS服务器(Ubuntu 20.04)和域名解析</a><time datetime="2021-11-14T13:36:13.000Z" title="发表于 2021-11-14 21:36:13">2021-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/ESPTCP/" title="ESP8266安卓TCP客户端开发（含全部源码）"><img src="https://p1.qhimg.com/bdm/1000_618_80/t01cce746262dcfe657.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ESP8266安卓TCP客户端开发（含全部源码）"></a><div class="content"><a class="title" href="/2021/11/13/ESPTCP/" title="ESP8266安卓TCP客户端开发（含全部源码）">ESP8266安卓TCP客户端开发（含全部源码）</a><time datetime="2021-11-12T16:28:39.000Z" title="发表于 2021-11-13 00:28:39">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/13/df-sed-awk-du-grep/" title="df-sed-awk-du-grep"><img src="https://p6.qhimg.com/bdm/1000_618_80/t01da9cea63827138d9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="df-sed-awk-du-grep"></a><div class="content"><a class="title" href="/2021/11/13/df-sed-awk-du-grep/" title="df-sed-awk-du-grep">df-sed-awk-du-grep</a><time datetime="2021-11-12T16:02:28.000Z" title="发表于 2021-11-13 00:02:28">2021-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/12/AndroidSQlite/" title="AndroidSQlite"><img src="https://p4.qhimg.com/bdm/1000_618_80/t019cde9afff4ea2484.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AndroidSQlite"></a><div class="content"><a class="title" href="/2021/11/12/AndroidSQlite/" title="AndroidSQlite">AndroidSQlite</a><time datetime="2021-11-12T15:48:36.000Z" title="发表于 2021-11-12 23:48:36">2021-11-12</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Kizai</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">好好生活</div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'f51urRPc7You6ygYs025nDgv-gzGzoHsz',
+      appKey: 'kfxaO70uTvknbBbKJqXAkBeG',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><link rel="stylesheet" href="/css/myfooter.css"><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><script src="//code.tidio.co/ckta2upr0jbiajh9gbsi7e6yt3nblxkk.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax="">
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax="" src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
