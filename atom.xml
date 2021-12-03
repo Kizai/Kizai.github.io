@@ -6,7 +6,7 @@
   <link href="http://www.kizaiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://www.kizaiblog.cn/"/>
-  <updated>2021-11-21T05:29:32.533Z</updated>
+  <updated>2021-12-03T19:22:24.522Z</updated>
   <id>http://www.kizaiblog.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Install Raspberry Pi OS</title>
+    <link href="http://www.kizaiblog.cn/2021/12/03/Install-Raspberry-Pi-OS/"/>
+    <id>http://www.kizaiblog.cn/2021/12/03/Install-Raspberry-Pi-OS/</id>
+    <published>2021-12-03T15:31:37.000Z</published>
+    <updated>2021-12-03T19:22:24.522Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;树莓派-Raspberry-Pi-3B-系统安装与环境搭建-详解&quot;&gt;&lt;a href=&quot;#树莓派-Raspberry-Pi-3B-系统安装与环境搭建-详解&quot; class=&quot;headerlink&quot; title=&quot;树莓派(Raspberry</summary>
+        
+      
+    
+    
+    
+    <category term="Raspberry Pi" scheme="http://www.kizaiblog.cn/categories/Raspberry-Pi/"/>
+    
+    
+    <category term="Raspberry Pi, Debian" scheme="http://www.kizaiblog.cn/tags/Raspberry-Pi-Debian/"/>
+    
+  </entry>
   
   <entry>
     <title>Wget-Curl-Lwp-request</title>
