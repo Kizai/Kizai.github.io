@@ -6,7 +6,7 @@
   <link href="http://www.kizaiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://www.kizaiblog.cn/"/>
-  <updated>2021-12-03T19:30:59.818Z</updated>
+  <updated>2021-12-04T07:06:25.489Z</updated>
   <id>http://www.kizaiblog.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Raspberry-Pi-Camera</title>
+    <link href="http://www.kizaiblog.cn/2021/12/04/Raspberry-Pi-Camera/"/>
+    <id>http://www.kizaiblog.cn/2021/12/04/Raspberry-Pi-Camera/</id>
+    <published>2021-12-04T04:52:39.000Z</published>
+    <updated>2021-12-04T07:06:25.489Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;使用树莓派-摄像头-motion实现视频监控系统&quot;&gt;&lt;a href=&quot;#使用树莓派-摄像头-motion实现视频监控系统&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Raspberry Pi" scheme="http://www.kizaiblog.cn/categories/Raspberry-Pi/"/>
+    
+    
+    <category term="Raspberry Pi, Camera" scheme="http://www.kizaiblog.cn/tags/Raspberry-Pi-Camera/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Install Raspberry Pi OS</title>
     <link href="http://www.kizaiblog.cn/2021/12/03/Install-Raspberry-Pi-OS/"/>
     <id>http://www.kizaiblog.cn/2021/12/03/Install-Raspberry-Pi-OS/</id>
     <published>2021-12-03T15:31:37.000Z</published>
-    <updated>2021-12-03T19:30:59.818Z</updated>
+    <updated>2021-12-04T06:26:00.231Z</updated>
     
     
       
