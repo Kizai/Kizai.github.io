@@ -96,7 +96,7 @@
     <link href="http://www.kizaiblog.cn/2021/11/14/DeployECS/"/>
     <id>http://www.kizaiblog.cn/2021/11/14/DeployECS/</id>
     <published>2021-11-14T13:36:13.000Z</published>
-    <updated>2021-11-21T07:58:31.166Z</updated>
+    <updated>2021-12-28T12:19:58.116Z</updated>
     
     
       
@@ -215,38 +215,11 @@
   </entry>
   
   <entry>
-    <title>正则表达式匹配规则</title>
-    <link href="http://www.kizaiblog.cn/2021/11/08/RE/"/>
-    <id>http://www.kizaiblog.cn/2021/11/08/RE/</id>
-    <published>2021-11-07T16:22:22.000Z</published>
-    <updated>2021-11-12T15:51:57.423Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;基本正则表达式&quot;&gt;&lt;a href=&quot;#基本正则表达式&quot; class=&quot;headerlink&quot; title=&quot;基本正则表达式&quot;&gt;&lt;/a&gt;基本正则表达式&lt;/h2&gt;&lt;center&gt;BRE元字符表&lt;/center&gt;
-
-&lt;div</summary>
-        
-      
-    
-    
-    
-    <category term="Linux,Shell" scheme="http://www.kizaiblog.cn/categories/Linux-Shell/"/>
-    
-    
-    <category term="Linux,Shell" scheme="http://www.kizaiblog.cn/tags/Linux-Shell/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux文件权限详解</title>
     <link href="http://www.kizaiblog.cn/2021/11/08/Linux-File-Permissions/"/>
     <id>http://www.kizaiblog.cn/2021/11/08/Linux-File-Permissions/</id>
     <published>2021-11-07T16:17:55.000Z</published>
-    <updated>2021-11-12T15:37:18.504Z</updated>
+    <updated>2021-12-05T06:56:57.644Z</updated>
     
     
       
@@ -260,6 +233,10 @@
     
     
     
+    <category term="Linux,Shell" scheme="http://www.kizaiblog.cn/categories/Linux-Shell/"/>
+    
+    
+    <category term="Linux,Shell" scheme="http://www.kizaiblog.cn/tags/Linux-Shell/"/>
     
   </entry>
   
