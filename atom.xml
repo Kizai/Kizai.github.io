@@ -6,7 +6,7 @@
   <link href="http://www.kizaiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://www.kizaiblog.cn/"/>
-  <updated>2021-12-04T07:09:46.380Z</updated>
+  <updated>2022-01-08T17:52:44.008Z</updated>
   <id>http://www.kizaiblog.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>修复：Windows 10 激活错误 0xC004F012.</title>
+    <link href="http://www.kizaiblog.cn/2022/01/09/windows-activation-error/"/>
+    <id>http://www.kizaiblog.cn/2022/01/09/windows-activation-error/</id>
+    <published>2022-01-08T17:51:32.000Z</published>
+    <updated>2022-01-08T17:52:44.008Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;修复 Windows 10 激活错误 0xC004F012 的详细说明。详细问题：在基于 Windows 10 的计算机上，在 Windows 更新或将 Windows 10 家庭版升级到 Windows 10 专业版后可能会出现以下问题： Windows</summary>
+        
+      
+    
+    
+    
+    <category term="Windows" scheme="http://www.kizaiblog.cn/categories/Windows/"/>
+    
+    
+    <category term="Windows 10 Activation error" scheme="http://www.kizaiblog.cn/tags/Windows-10-Activation-error/"/>
+    
+  </entry>
   
   <entry>
     <title>Raspberry-Pi-Camera</title>

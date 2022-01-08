@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.kizaiblog.cn/2022/01/09/windows-activation-error/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.kizaiblog.cn/2021/11/14/DeployECS/</loc>
     
     <lastmod>2021-12-28</lastmod>
@@ -164,6 +171,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://www.kizaiblog.cn/tags/Windows-10-Activation-error/</loc>
+    <lastmod>2022-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -189,6 +203,13 @@
   
   <url>
     <loc>http://www.kizaiblog.cn/categories/Linux-Shell/</loc>
+    <lastmod>2022-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.kizaiblog.cn/categories/Windows/</loc>
     <lastmod>2022-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
